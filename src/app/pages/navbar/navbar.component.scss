@@ -1,0 +1,24 @@
+nav{
+  ul{
+    display: flex;
+    gap: 15px;
+    li{
+      list-style-type: none;
+      cursor: pointer;
+      &:after{
+        content: "";
+        height: 2px;
+        width: 0;
+        background-color: white;
+        display: block;
+        transition: 0.3s;
+      }
+      &:hover,
+      &.active{
+        &:after{
+          width: 100%;
+        }
+      }
+    }
+  }
+}
