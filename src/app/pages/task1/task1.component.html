@@ -1,1 +1,74 @@
-<p>task1 works!</p>
+<div>
+  <a mat-fab extended routerLink=".">
+    <mat-icon>add</mat-icon>
+    Add Job
+  </a>
+</div>
+
+<div class="job-container">
+  <form class="form" [formGroup]="form" (submit)="submit()">
+    <div class="company-fields">
+      <app-input formControlName="companyName" [parentForm]="form" fieldName="companyName" label="Company Name"></app-input>
+      <mat-form-field class="full-width">
+        <mat-label>Company Url</mat-label>
+        <input matInput placeholder="Company Website" formControlName="companyUrl">
+        @if (form.get('companyUrl')?.invalid && form.get('companyUrl')?.touched) {
+        <mat-hint align="start"  class="error"> Please fix Url syntax</mat-hint>
+        }
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="companyDescription"></textarea>
+        @if (form.get('companyDescription')?.invalid && form.get('companyDescription')?.touched) {
+        <mat-hint align="start"  class="error"> Please Enter Description</mat-hint>
+        }
+      </mat-form-field>
+    </div>
+    <div class="add-position">
+      <a mat-fab extended routerLink="." color="primary" (click)="addJobPosition()">
+        <mat-icon>add</mat-icon>
+        Add Position
+      </a>
+      <div formArrayName="jobPosition">
+        @for (control of jobPositionFormArray.controls; track control; let index =$index) {
+        <div [formGroupName]="index" class="position-fields">
+          <app-input formControlName="positionName" class="full-width" [parentForm]="form" fieldName="positionName" label="Position Name"></app-input>
+          <mat-radio-group aria-label="Select Position Level" formControlName="positionLevel" class="full-width">
+            <mat-radio-button name="positionLevel" value="junior">Junior</mat-radio-button>
+            <mat-radio-button name="positionLevel" value="middle">Middle</mat-radio-button>
+            <mat-radio-button name="positionLevel" value="senior">Senior</mat-radio-button>
+          </mat-radio-group>
+          <mat-form-field class="full-width">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="positionDescription"></textarea>
+          </mat-form-field>
+          <div class="date-container">
+            <mat-form-field>
+              <mat-label>Choose Start Date</mat-label>
+              <input matInput [matDatepicker]="picker1"  formControlName="positionStartDate">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Choose End Date</mat-label>
+              <input matInput [matDatepicker]="picker2" formControlName="positionEndDate">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="remove-position">
+            <a mat-fab extended routerLink="." color="primary" (click)="removeJobPosition(index)">
+              <mat-icon>remove</mat-icon>
+              remove Position
+            </a>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+<!--    <button type="submit"> submit</button>-->
+  </form>
+</div>

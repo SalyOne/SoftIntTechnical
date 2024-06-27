@@ -6,9 +6,10 @@ import {Task4Component} from "./pages/task4/task4.component";
 import {Task5Component} from "./pages/task5/task5.component";
 
 export const routes: Routes = [
-  {'path': '', component: Task1Component},
-  {'path': 'task2', component: Task2Component},
-  {'path': 'task3', component: Task3Component},
-  {'path': 'task4', component: Task4Component},
-  {'path': 'task5', component: Task5Component},
+  {'path': '', redirectTo:'task1', pathMatch:'full'},
+  {'path': 'task1', 'title':'task1', component: Task1Component},
+  {'path': 'task2', 'title':'task 2', component: Task2Component},
+  {'path': 'task3', 'title':'task 3', component: Task3Component},
+  {'path': 'task4', 'title':'task 4', component: Task4Component},
+  {'path': 'task5', 'title':'task 5', component: Task5Component},
 ];
