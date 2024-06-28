@@ -1,26 +1,34 @@
 <section class="input-container">
   <div class="input-item">
-    <h2> შეიყვანეთ შესადარებელი სიტყვა:</h2>
+    <h2>შეიყვანეთ შესადარებელი სიტყვა:</h2>
     <mat-form-field class="full-width">
       <mat-label>Value 1</mat-label>
-      <input matInput placeholder="Value1 "
-             [(ngModel)]="value1">
+      <input matInput placeholder="Value1 " [(ngModel)]="value1" />
     </mat-form-field>
   </div>
   <div class="input-item">
-    <h2>  შეიყვანეთ სიტყვების მასივი:</h2>
+    <h2>შეიყვანეთ სიტყვების მასივი:</h2>
     <mat-form-field class="full-width">
       <mat-label>Value 2</mat-label>
-      <input matInput placeholder="Value2"
-             [(ngModel)]="value2"
-             (ngModelChange)="splitString($event)"
-      >
-      <mat-hint> ელემენტები გამოყავით " ; "  ნიშნით</mat-hint>
+      <input
+        matInput
+        placeholder="Value2"
+        [(ngModel)]="value2"
+        (ngModelChange)="splitString($event)"
+      />
+      <mat-hint> ელემენტები გამოყავით " ; " ნიშნით</mat-hint>
     </mat-form-field>
   </div>
 </section>
+@if(value2Array){
 <section class="result">
-  @for(item of value2Array; track item){
-  <p> <span>{{$index}} </span>: <span>{{value1}}</span> და  <span>{{item}}</span> დამთხვევის პროცენტულობა: <span>{{similarityPercentage(value1, item)}}%</span></p>
-  }
+<h1>შედეგი:</h1>
+@for(item of value2Array; track item){
+<p>
+  <span>{{ $index +1}} </span>: <span>{{ value1 }}</span> და
+  <span>{{ item }}</span> დამთხვევის პროცენტულობა:
+  <span>{{ similarityPercentage(value1, item) }}%</span>
+</p>
+}
 </section>
+}
