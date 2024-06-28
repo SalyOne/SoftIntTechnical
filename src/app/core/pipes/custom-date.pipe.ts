@@ -12,7 +12,7 @@ export class CustomDatePipe implements PipeTransform {
     const date = new Date(dateString);
 
     const day = this.padZero(date.getDate());
-    const month = this.padZero(date.getMonth() + 1);  // Months are zero-based
+    const month = this.padZero(date.getMonth() + 1);
     const year = date.getFullYear();
     const hours = this.padZero(date.getHours());
     const minutes = this.padZero(date.getMinutes());
@@ -28,7 +28,6 @@ export class CustomDatePipe implements PipeTransform {
       return value
     }
     const formattedDate = this.convertToCustomFormat(value);
-    console.log(formattedDate);
     return formattedDate
   }
 
