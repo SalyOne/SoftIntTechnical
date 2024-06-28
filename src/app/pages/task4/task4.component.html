@@ -1,1 +1,22 @@
-<p>task4 works!</p>
+<div class="calendar">
+  <h2>{{ currentMonth }} {{ currentYear }}</h2>
+  <div class="calendar-grid">
+    @for(day of ['Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']; track day){
+      <div class="day-header">{{ day }}</div>
+    }
+      @for(week of weeks; track week){
+        @for(date of week; track date; let i= $index){
+          <div class="date">
+<!--            @if(i<=lastDayOfPrevMonth.getDay()){-->
+<!--            shalala {{i}}-->
+<!--            }-->
+            @if(date){
+            <span>{{ date }}</span>
+            }
+          </div>
+        }
+      }
+  </div>
+</div>
+
+<!--lastDateOfLastMonth {{lastDayOfPrevMonth.getDay()}}-->
