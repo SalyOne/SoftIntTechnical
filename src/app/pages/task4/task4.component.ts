@@ -7,40 +7,38 @@ import {Component, OnInit} from '@angular/core';
   templateUrl: './task4.component.html',
   styleUrl: './task4.component.scss'
 })
-export class Task4Component implements OnInit{
+export class Task4Component implements OnInit {
 
-
-
+  holidays=[2,10,12,21,27,31]
   weeks: (number | null)[][] = [];
-  now:Date = new Date();
-  currentMonth: string = this.now.toLocaleString('default', { month: 'long' });
-  currentYear: number= this.now.getFullYear();
+  now: Date = new Date();
+  totalAmountOfWeeks!:number
+  currentMonth: string = this.now.toLocaleString('default', {month: 'long'});
+  currentYear: number = this.now.getFullYear();
+  currentDay:number = this.now.getDate()
 
   firstDayOfMonth = new Date(this.currentYear, this.now.getMonth(), 1);
-  lastDayOfMonth = new Date(this.currentYear, this.now.getMonth() + 1, 0);
-  lastDayOfPrevMonth = new Date(this.currentYear, this.now.getMonth() , 0)
-  firstDayOfNextMonth = new Date(this.currentYear, this.now.getMonth()+1, 1);
-
   firstDayOfWeek = this.firstDayOfMonth.getDay();
+
+  lastDayOfMonth = new Date(this.currentYear, this.now.getMonth() +1, 0);
   lastDate = this.lastDayOfMonth.getDate();
-  lastDateOfLastMonth =  this.lastDayOfPrevMonth.getDate()
-  firstDateOfNextMonth =  this.firstDayOfNextMonth.getDate()
+
+  lastDayOfPrevMonth = new Date(this.currentYear, this.now.getMonth() , 0)
+  lastDateOfLastMonth = this.lastDayOfPrevMonth.getDate()
+
+
+  firstDayOfNextMonth = new Date(this.currentYear, this.now.getMonth() +1, 1);
+  firstWeekDayOfNextMonth = this.firstDayOfNextMonth.getDay()
 
   ngOnInit() {
     this.generateCalendar();
-    console.log(this.firstDayOfNextMonth)
-    console.log(this.firstDateOfNextMonth)
   }
 
   generateCalendar() {
-    console.log("day", this.firstDayOfWeek)
-
-
     let week: (number | null)[] = new Array(7).fill(null);
-
     if (this.firstDayOfWeek != 0) {
       for (let i = 0; i < this.firstDayOfWeek; i++) {
-          week[i]=this.lastDateOfLastMonth-(this.firstDayOfWeek-i-1)
+        week[i] = this.lastDateOfLastMonth - (this.firstDayOfWeek - i - 1)
       }
     }
 
@@ -60,16 +58,13 @@ export class Task4Component implements OnInit{
       this.weeks.push(week);
     }
 
-    while (this.weeks.length < 6) {
-      this.weeks.push(new Array(7).fill(null));
-    }
-
-
-    if (this.lastDate != 0) {
-      for (let i = this.firstDateOfNextMonth; i <7 ; i++) {
-        week[i]=this.firstDateOfNextMonth+i-1
+    let dayCounter = 0
+    if (this.lastDayOfMonth.getDay() != 6) {
+      for (let i = this.firstWeekDayOfNextMonth; i < 7; i++) {
+        week[i] = this.firstDayOfNextMonth.getDate() + dayCounter;
+        dayCounter++;
       }
     }
+    this.totalAmountOfWeeks = this.weeks.length-1
   }
-
 }

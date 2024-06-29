@@ -7,11 +7,20 @@
       @for(week of weeks; track week){
         @for(date of week; track date; let i= $index){
           <div class="date">
-<!--            @if(i<=lastDayOfPrevMonth.getDay()){-->
-<!--            shalala {{i}}-->
-<!--            }-->
-            @if(date){
-            <span>{{ date }}</span>
+            @if(i<=lastDayOfPrevMonth.getDay() && $index==0 && this.firstDayOfWeek != 0){
+              <span class="wrong-month">{{ date }}</span>
+            }
+            @else if(i>=this.firstWeekDayOfNextMonth && $index == this.totalAmountOfWeeks && this.lastDayOfMonth.getDay() != 6){
+              <span class="wrong-month">{{ date }}</span>
+            }
+            @else if(date && this.holidays.includes(date)){
+              <span class="holiday">{{ date }}</span>
+            }
+            @else if(date && this.currentDay == date){
+              <span class="current-date">{{ date }}</span>
+            }
+            @else{
+              <span>{{ date }}</span>
             }
           </div>
         }
