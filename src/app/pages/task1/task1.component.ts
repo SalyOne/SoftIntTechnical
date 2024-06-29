@@ -1,6 +1,6 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { MatIcon } from '@angular/material/icon';
-import { MatFabAnchor } from '@angular/material/button';
+import {Component, OnInit, inject} from '@angular/core';
+import {MatIcon} from '@angular/material/icon';
+import {MatFabAnchor} from '@angular/material/button';
 import {
   FormArray,
   FormBuilder,
@@ -9,17 +9,17 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { ValidateUrl } from '../../core/validators/url.validator';
-import { MatRadioButton, MatRadioGroup } from '@angular/material/radio';
+import {MatFormField, MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {ValidateUrl} from '../../core/validators/url.validator';
+import {MatRadioButton, MatRadioGroup} from '@angular/material/radio';
 import {
   MatDatepicker,
   MatDatepickerModule,
   MatDatepickerToggle,
 } from '@angular/material/datepicker';
-import { provideNativeDateAdapter } from '@angular/material/core';
-import { InputComponent } from '../../shared/form-elements/input/input.component';
+import {provideNativeDateAdapter} from '@angular/material/core';
+import {InputComponent} from '../../shared/form-elements/input/input.component';
 
 @Component({
   selector: 'app-task1',
@@ -73,6 +73,7 @@ export class Task1Component implements OnInit {
   removeCompany(compIndex: number) {
     this.companyFormArray.removeAt(compIndex);
   }
+
   jobPositionFormArray(compIndex: number): FormArray {
     return this.companyFormArray.at(compIndex).get('jobPosition') as FormArray;
   }
@@ -80,7 +81,7 @@ export class Task1Component implements OnInit {
   newPosition(): FormGroup {
     return new FormGroup({
       positionName: new FormControl('', Validators.required),
-      positionLevel: new FormControl(''),
+      positionLevel: new FormControl('', Validators.required),
       positionDescription: new FormControl(''),
       positionStartDate: new FormControl('', Validators.required),
       positionEndDate: new FormControl('', Validators.required),
