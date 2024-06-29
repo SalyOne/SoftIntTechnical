@@ -11,7 +11,7 @@ import {
 } from '@angular/forms';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ValidateUrl } from '../../validators/url.validator';
+import { ValidateUrl } from '../../core/validators/url.validator';
 import { MatRadioButton, MatRadioGroup } from '@angular/material/radio';
 import {
   MatDatepicker,
