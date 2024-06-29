@@ -1,8 +1,20 @@
 
-
-
-<p> გადაცემული მნიშვნელობა: {{date}}, დაბრუნებული: {{date | customDate}}</p>
-<p> გადაცემული მნიშვნელობა: {{date2}}, დაბრუნებული: {{date2 | customDate}}</p>
-<p> გადაცემული მნიშვნელობა: {{date3}}, დაბრუნებული: {{date3 | customDate}}</p>
-<p> გადაცემული მნიშვნელობა: {{string}}, დაბრუნებული: {{string | customDate}}</p>
-<p> გადაცემული მნიშვნელობა: {{num}}, დაბრუნებული: {{num | customDate}}</p>
+<mat-list>
+  <mat-list-item> გადაცემული მნიშვნელობა: <b>{{date}}</b>, შედეგი: <b>{{date | customDate}}</b></mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item> გადაცემული მნიშვნელობა: <b>{{date2}}</b>, შედეგი: <b>{{date2 | customDate}}</b></mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item>გადაცემული მნიშვნელობა: <b>{{date3}}</b>, შედეგი:<b>{{date3 | customDate}}</b> </mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item>გადაცემული მნიშვნელობა: <b>{{entry}}</b>, შედეგი: <b>{{entry | customDate}}</b></mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item class="item">
+    გადაცემული მნიშვნელობა:
+    <mat-form-field class="input">
+      <mat-label>Enter</mat-label>
+      <input matInput type="text" [(ngModel)]="value">
+    </mat-form-field>
+    შედეგი:
+    {{this.value | customDate}}
+  </mat-list-item>
+</mat-list>

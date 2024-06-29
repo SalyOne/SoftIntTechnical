@@ -12,11 +12,11 @@ export class CustomDatePipe implements PipeTransform {
     const date = new Date(dateString);
 
     const day = this.padZero(date.getDate());
-    const month = this.padZero(date.getMonth() + 1);
-    const year = date.getFullYear();
-    const hours = this.padZero(date.getHours());
-    const minutes = this.padZero(date.getMinutes());
-    const seconds = this.padZero(date.getSeconds());
+    const month = this.padZero(date.getUTCMonth() + 1);
+    const year = date.getUTCFullYear();
+    const hours = this.padZero(date.getUTCHours());
+    const minutes = this.padZero(date.getUTCMinutes());
+    const seconds = this.padZero(date.getUTCSeconds());
 
     return `${hours}:${minutes}:${seconds} ${month} ${day} ${year} `;
   }
