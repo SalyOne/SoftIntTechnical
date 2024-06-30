@@ -4,3 +4,6 @@
 .full-width{
   width: 100%;
 }
+.mdc-text-field--invalid:not(.mdc-text-field--disabled){
+  color: red;
+}

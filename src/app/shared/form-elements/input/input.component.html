@@ -1,4 +1,4 @@
-<mat-form-field class="full-width">
+<mat-form-field class="full-width" [ngClass]="{'mat-form-field-invalid':isTouched}">
   <mat-label>{{label}}</mat-label>
   <input matInput
          [value]="value"
@@ -6,7 +6,7 @@
          (input)="onChange($event)"
          (blur)="onTouched()"
   >
-  @if (formField?.invalid && formField?.touched) {
-    <mat-hint align="start" class="error"> This field is Invalid</mat-hint>
+  @if (isTouched) {
+    <mat-hint align="start" class="error"> please enter a value</mat-hint>
   }
 </mat-form-field>

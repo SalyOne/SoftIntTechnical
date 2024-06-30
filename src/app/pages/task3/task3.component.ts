@@ -28,8 +28,8 @@ import {MatIconModule} from "@angular/material/icon";
 })
 export class Task3Component {
     value!: string;
-    date:string = "2023-08-10T09:42:34.0734574Z"
-    date2:string = "2023-06-27T14:23:00Z"
+    date:string = "2023-08-10T09:42:34.0734574"
+    date2:string = "2023-06-27T14:23:00"
     date3:string = "06/27/2023 2:23 PM"
     entry:string = "hello ^_^"
 }

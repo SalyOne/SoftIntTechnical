@@ -81,7 +81,7 @@ export class Task1Component implements OnInit {
   newPosition(): FormGroup {
     return new FormGroup({
       positionName: new FormControl('', Validators.required),
-      positionLevel: new FormControl('', Validators.required),
+      positionLevel: new FormControl(''),
       positionDescription: new FormControl(''),
       positionStartDate: new FormControl('', Validators.required),
       positionEndDate: new FormControl('', Validators.required),

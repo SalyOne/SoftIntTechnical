@@ -2,6 +2,7 @@ import {Component, forwardRef, Input} from '@angular/core';
 import {MatFormField, MatFormFieldModule, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR} from "@angular/forms";
+import {CommonModule} from "@angular/common";
 
 @Component({
   selector: 'app-input',
@@ -11,6 +12,7 @@ import {ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR} from "@
     MatLabel,
     MatInput,
     MatFormFieldModule,
+    CommonModule
   ],
   templateUrl: './input.component.html',
   styleUrl: './input.component.scss',
@@ -62,8 +64,9 @@ get formField():FormControl |undefined{
     const value: string = (event.target as HTMLInputElement).value;
     this.onChangeFn(value);
   }
-
+  isTouched=false
   onTouched(): void {
+    this.isTouched = true
     this.onTouchedFn();
   }
 }
