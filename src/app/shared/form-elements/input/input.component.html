@@ -4,7 +4,7 @@
          [value]="value"
          [disabled]="isDisabled"
          (input)="onChange($event)"
-         (blur)="onTouched()"
+         (blur)="onTouched($event)"
   >
   @if (isTouched) {
     <mat-hint align="start" class="error"> please enter a value</mat-hint>

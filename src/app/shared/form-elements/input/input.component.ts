@@ -62,11 +62,15 @@ get formField():FormControl |undefined{
 
   onChange(event: Event): void {
     const value: string = (event.target as HTMLInputElement).value;
+    this.isTouched = false
     this.onChangeFn(value);
   }
   isTouched=false
-  onTouched(): void {
-    this.isTouched = true
+  onTouched(event: Event): void {
+    const value: string = (event.target as HTMLInputElement).value;
     this.onTouchedFn();
+    if (!value){
+      this.isTouched = true
+    }
   }
 }
